@@ -1,0 +1,4 @@
+\chapter{Ein cooles Thema}
+
+# User facing Latex is obsolete.
+Yes. You heard it.

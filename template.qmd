@@ -1,0 +1,19 @@
+---
+title: A very cool bachelor's thesis
+title-de: Titel
+format:
+  tum-pdf: default
+
+author: Alp Kaan Aksu
+date: last-modified
+supervisor: "Marek Lorenz"
+advisor: "Marek Lorenz"
+
+acknowledgements: |
+  Some acknowledgements...
+
+abstract: |
+  This is my abstract!!!
+---
+
+{{< include chapters/chapter1.qmd >}}

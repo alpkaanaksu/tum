@@ -1,0 +1,215 @@
+\RequirePackage[l2tabu,orthodox]{nag}
+
+\documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+
+% settings
+
+\PassOptionsToPackage{table,svgnames,dvipsnames}{xcolor}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\usepackage[ngerman,american]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage[%
+  backend=biber,
+  url=false,
+  style=alphabetic,
+  maxnames=4,
+  minnames=3,
+  maxbibnames=99,
+  giveninits,
+  uniquename=init]{biblatex} % TODO: adapt citation style
+\usepackage{graphicx}
+\usepackage{scrhack} % necessary for listings package
+\usepackage{listings}
+\usepackage{lstautogobble}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage[final]{microtype}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref} % hidelinks removes colored boxes around references and links
+
+\bibliography{bibliography}
+
+\setkomafont{disposition}{\normalfont\bfseries} % use serif font for headings
+\linespread{1.05} % adjust line spread for mathpazo font
+
+% Add table of contents to PDF bookmarks
+\BeforeTOCHead[toc]{{\cleardoublepage\pdfbookmark[0]{\contentsname}{toc}}}
+
+% Define TUM corporate design colors
+% Taken from http://portal.mytum.de/corporatedesign/index_print/vorlagen/index_farben
+\definecolor{TUMBlue}{HTML}{0065BD}
+\definecolor{TUMSecondaryBlue}{HTML}{005293}
+\definecolor{TUMSecondaryBlue2}{HTML}{003359}
+\definecolor{TUMBlack}{HTML}{000000}
+\definecolor{TUMWhite}{HTML}{FFFFFF}
+\definecolor{TUMDarkGray}{HTML}{333333}
+\definecolor{TUMGray}{HTML}{808080}
+\definecolor{TUMLightGray}{HTML}{CCCCC6}
+\definecolor{TUMAccentGray}{HTML}{DAD7CB}
+\definecolor{TUMAccentOrange}{HTML}{E37222}
+\definecolor{TUMAccentGreen}{HTML}{A2AD00}
+\definecolor{TUMAccentLightBlue}{HTML}{98C6EA}
+\definecolor{TUMAccentBlue}{HTML}{64A0C8}
+
+% Settings for pgfplots
+\pgfplotsset{compat=newest}
+\pgfplotsset{
+  % For available color names, see http://www.latextemplates.com/svgnames-colors
+  cycle list={TUMBlue\\TUMAccentOrange\\TUMAccentGreen\\TUMSecondaryBlue2\\TUMDarkGray\\},
+}
+
+% Settings for lstlistings
+\lstset{%
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  autogobble,
+  keywordstyle=\bfseries\color{TUMBlue},
+  stringstyle=\color{TUMAccentGreen}
+}
+
+\begin{document}
+
+\pagenumbering{alph}
+
+% cover
+\begin{titlepage}
+    % HACK for two-sided documents: ignore binding correction for cover page.
+    % Adapted from Markus Kohm's KOMA-Script titlepage=firstiscover handling.
+    % See http://mirrors.ctan.org/macros/latex/contrib/koma-script/scrkernel-title.dtx,
+    % \maketitle macro.
+    \oddsidemargin=\evensidemargin\relax
+    \textwidth=\dimexpr\paperwidth-2\evensidemargin-2in\relax
+    \hsize=\textwidth\relax
+  
+    \centering
+  
+    \IfFileExists{logos/tum.pdf}{%
+      \includegraphics[height=20mm]{logos/tum.pdf}
+    }{%
+      \vspace*{20mm}
+    }
+  
+    \vspace{5mm}
+    {\huge\MakeUppercase{$faculty$}}\\
+  
+    \vspace{5mm}
+    {\large\MakeUppercase{$university$}}\\
+  
+    \vspace{20mm}
+    {\Large $doctype$}
+  
+    \vspace{15mm}
+    {\huge\bfseries $title$}
+  
+    \vspace{15mm}
+    {\LARGE $author$}
+  
+    \IfFileExists{logos/faculty.pdf}{%
+      \vfill{}
+      \includegraphics[height=20mm]{logos/faculty.pdf}
+    }{}
+  \end{titlepage}
+
+  \frontmatter{}
+
+  % title
+  \begin{titlepage}
+    \centering
+  
+    \IfFileExists{logos/tum.pdf}{%
+      \includegraphics[height=20mm]{logos/tum.pdf}
+    }{%
+      \vspace*{20mm}
+    }
+  
+    \vspace{5mm}
+    {\huge\MakeUppercase{$faculty$}}\\
+  
+    \vspace{5mm}
+    {\large\MakeUppercase{$university$}}\\
+  
+    \vspace{20mm}
+    {\Large $doctype$}
+  
+    \vspace{15mm}
+    {\huge\bfseries $title$ \par}
+  
+    \vspace{10mm}
+    {\huge\bfseries \foreignlanguage{ngerman}{$title-de$} \par}
+  
+    \vspace{15mm}
+    \begin{tabular}{l l}
+      Author:          & $author$ \\
+      Supervisor:      & $supervisor$ \\
+      Advisor:         & $advisor$ \\
+      Submission Date: & $date$ \\
+    \end{tabular}
+  
+    \IfFileExists{logos/faculty.pdf}{%
+      \vfill{}
+      \includegraphics[height=20mm]{logos/faculty.pdf}
+    }{}
+  \end{titlepage}
+
+  % disclaimer
+
+  \thispagestyle{empty}
+  \vspace*{0.8\textheight}
+  \noindent
+  I confirm that this \MakeLowercase{$doctype$} is my own work and I have documented all sources and material used.
+  
+  \vspace{15mm}
+  \noindent
+  $location$, $date$ \hspace{50mm} $author$
+  
+  \cleardoublepage{}
+
+  % acknowledgements
+  \addcontentsline{toc}{chapter}{Acknowledgments}
+\thispagestyle{empty}
+
+\vspace*{20mm}
+
+\begin{center}
+{\usekomafont{section} Acknowledgments}
+\end{center}
+
+\vspace{10mm}
+
+$acknowledgements$
+
+\cleardoublepage{}
+
+  % abstract
+  \chapter{\abstractname}
+  $abstract$
+
+  \microtypesetup{protrusion=false}
+\tableofcontents{}
+\microtypesetup{protrusion=true}
+
+\mainmatter{}
+
+$body$
+
+\appendix{}
+
+\microtypesetup{protrusion=false}
+\listoffigures{}
+\listoftables{}
+\microtypesetup{protrusion=true}
+\printbibliography{}
+
+\end{document}
+
+\end{document}
