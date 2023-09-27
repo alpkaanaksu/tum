@@ -4,10 +4,10 @@ title-de: Titel
 format:
   tum-pdf: default
 
-author: Alp Kaan Aksu
+author: Author
 date: last-modified
-supervisor: "Marek Lorenz"
-advisor: "Marek Lorenz"
+supervisor: "Supervisor"
+advisor: "Advisor"
 
 acknowledgements: |
   Some acknowledgements...
