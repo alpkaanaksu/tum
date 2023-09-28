@@ -12,6 +12,20 @@ This will install the extension and create an example qmd file that you can use 
 
 You can write your chaters under 'chapters/' and include them in your document by using quarto shorcodes: `{{< include chatpters/chapter_name.qmd >}}`
 
+## Rendering
+
+Make sure you have the following in your main .qmd file:
+
+```yaml
+format:
+  tum-pdf: default
+```
+
+Then, simply run:
+```{bash}
+quarto render <filename>.qmd
+```
+
 ## Format Options
 
 | option | explanation |
