@@ -45,7 +45,7 @@ quarto render <filename>.qmd
 
 [![Creative Commons License][license-image]][license]
 
-This Quarto template build upon the work of [Florian Walch and contributors][template-authors]. The original template can be found [here][template-url].
+This Quarto template builds upon the work of [Florian Walch and other contributors][template-authors]. The original template can be found [here][template-url].
 
 This template is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License][license], meaning that:
 
