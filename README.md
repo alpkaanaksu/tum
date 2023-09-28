@@ -1,6 +1,6 @@
-# Tum Format
+# Quarto TUM output format
 
-## Installing
+## Create a new project
 
 ```bash
 quarto use template alpkaanaksu/tum
