@@ -14,6 +14,7 @@ You can write your chaters under 'chapters/' and include them in your document b
 
 ## Format Options
 
+| option | explanation |
 | --- | --- |
 | `university` | Name of the university, default: Technical University of Munich |
 | `faculty` | Name of the faculty, default: School of Computation, Information and Technology - Informatics |
