@@ -10,7 +10,7 @@ This will install the extension and create an example qmd file that you can use 
 
 ## Using
 
-You can write your chaters under 'chapters/' and include them in your document by using quarto shorcodes: `{{< include chatpters/chapter_name.qmd >}}`
+You can write your chapters under 'chapters/' and include them in your document by using quarto shorcodes: `{{< include chatpters/chapter_name.qmd >}}`
 
 ## Rendering
 
